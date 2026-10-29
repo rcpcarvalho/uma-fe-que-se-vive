@@ -16,7 +16,7 @@ function aviso(){
   if (d) return d;
   const css = document.createElement('style');
   css.textContent = `
-#aviso-compra{max-width:340px;width:calc(100vw - 48px);box-sizing:border-box;border:0;border-radius:16px;padding:22px 20px 18px;background:#FBF6EC;color:#22242B;font-family:'Source Serif 4',Georgia,serif;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);border-top:4px solid #C9973A}
+#aviso-compra{max-width:340px;width:calc(100vw - 48px);box-sizing:border-box;border:0;border-radius:16px;padding:22px 20px 18px;background:#FFFFFF;color:#22242B;font-family:'Source Serif 4',Georgia,serif;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);border-top:4px solid #C9973A}
 #aviso-compra::backdrop{background:rgba(10,18,36,.7)}
 #aviso-compra .t{display:block;font-family:'Outfit',sans-serif;font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#7A5A2E;margin-bottom:8px}
 #aviso-compra h2{margin:0 0 10px;font-family:'Playfair Display',serif;font-weight:600;font-size:22px;line-height:1.15;color:#1E3A63}

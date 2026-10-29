@@ -13,18 +13,18 @@
 <style>
 body{margin:0;background:#1B2742}
 /* Amostra do miolo: páginas exportadas do livro, sem redesenho. Cada tela de rolagem vira uma folha. */
-.flip{position:relative;height:calc(5 * 100svh);view-timeline-name:--folhear;view-timeline-axis:block}
+.flip{position:relative;height:calc(6 * 100svh);view-timeline-name:--folhear;view-timeline-axis:block}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden;perspective:2400px;background:radial-gradient(120% 90% at 50% 40%,#2A3858 0%,#1B2742 60%,#141E36 100%);--pw:min(calc(100vw - 40px),calc((100svh - 190px) * .6783),520px);--ph:calc(var(--pw) / .6783)}
 .book{position:absolute;left:calc(50vw - var(--pw) / 2);top:calc(50svh - var(--ph) / 2 + 4px);width:var(--pw);height:var(--ph);transform-style:preserve-3d}
-.miolo{position:absolute;inset:0;background:#F6EFE2;box-shadow:6px 0 0 -2px #EDE4D3,10px 0 0 -4px #E4DACA,0 30px 80px -30px rgba(0,0,0,.6)}
+.miolo{position:absolute;inset:0;background:#FFFFFF;box-shadow:6px 0 0 -2px #EDEDED,10px 0 0 -4px #E0E0E0,0 30px 80px -30px rgba(0,0,0,.6)}
 .leaf{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:0 50%;transform:translateZ(calc(var(--z) * .5px))}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#FBF6EC}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#FFFFFF}
 .face img{display:block;width:100%;height:100%;object-fit:cover;object-position:0 0}
 /* Toque nos botões das folhas: no Chrome o toque parava na própria face (ou no verso) e não chegava ao link.
    Meio pixel à frente na face e verso sem toque resolvem. */
 .face:not(.back){transform:translateZ(.5px)}
-.back{pointer-events:none;transform:rotateY(180deg);background:linear-gradient(270deg,#E9E0CF 0%,#F7F0E3 4%,#F9F3E8 9%)}
-.fim{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:0 10%;box-sizing:border-box;font-family:'Source Serif 4',Georgia,serif;color:#22242B;background:linear-gradient(90deg,#E9E0CF 0%,#F7F0E3 4%,#FBF6EC 9%,#FBF6EC 100%)}
+.back{pointer-events:none;transform:rotateY(180deg);background:linear-gradient(270deg,#E6E6E6 0%,#F5F5F5 4%,#FFFFFF 9%)}
+.fim{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:0 10%;box-sizing:border-box;font-family:'Source Serif 4',Georgia,serif;color:#22242B;background:linear-gradient(90deg,#E6E6E6 0%,#F5F5F5 4%,#FFFFFF 9%,#FFFFFF 100%)}
 .lbl{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:#6B6F7A}
 .h{margin:0;font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(22px,calc(var(--pw) / 13),32px);line-height:1.12;color:#1E3A63}
 .btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#1E3A63;color:#FFFFFF;font-family:'Outfit',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-decoration:none}
@@ -77,24 +77,29 @@ body{margin:0;background:#1B2742}
       </div>
     </div>
 
-    <div class="leaf pg" style="--z: 2; --r0: 90%; --r1: 100%;">
+    <div class="leaf pg" style="--z: 2; --r0: 92%; --r1: 100%;">
       <div class="face"><img src="assets/pagina-diaria.jpg" alt="Mensagem do dia 28 de outubro: Não vos deixarei órfãos" width="760" height="1093" loading="lazy"></div>
       <div class="face back"></div>
     </div>
 
-    <div class="leaf pg" style="--z: 3; --r0: 65%; --r1: 75%;">
+    <div class="leaf pg" style="--z: 3; --r0: 72%; --r1: 80%;">
       <div class="face"><img src="assets/planner.jpg" alt="Página do planner de janeiro: Minha fé no cotidiano" width="640" height="944" loading="lazy"></div>
       <div class="face back"></div>
     </div>
 
-    <div class="leaf pg" style="--z: 4; --r0: 40%; --r1: 50%;">
+    <div class="leaf pg" style="--z: 4; --r0: 52%; --r1: 60%;">
       <div class="face"><img src="assets/abertura-janeiro.jpg" alt="Abertura do mês de janeiro, com o QR code da mensagem do mês" width="640" height="944"></div>
       <div class="face back"></div>
     </div>
 
-    <!-- Ordem do livro: De/Para (início) → abertura de janeiro → planner de janeiro → mensagem de 28/out. -->
-    <div class="leaf pg" style="--z: 5; --r0: 15%; --r1: 25%;">
+    <div class="leaf pg" style="--z: 5; --r0: 32%; --r1: 40%;">
       <div class="face"><img src="assets/presente.jpg" alt="Página de De/Para para presentear: “Que, nestas páginas, você encontre encorajamento para viver a fé todos os dias.”" width="640" height="944"></div>
+      <div class="face back"></div>
+    </div>
+    <!-- Ordem do livro (Figma, página "FECHAMENTO · livro inteiro"): p. 001 folha de rosto → p. 003 página de presente
+         → abertura de janeiro → planner de janeiro → … → mensagem de 28/out. -->
+    <div class="leaf pg" style="--z: 6; --r0: 12%; --r1: 20%;">
+      <div class="face"><img src="assets/folha-rosto.jpg" alt="Folha de rosto: Devocional, Uma fé que se vive, 365 dias de Palavra, crescimento e transformação, Nei Messias" width="640" height="944"></div>
       <div class="face back"></div>
     </div>
   </div>

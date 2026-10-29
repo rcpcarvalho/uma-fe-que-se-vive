@@ -17,15 +17,15 @@ body{margin:0;background:#1B2742}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden;perspective:2400px;background:radial-gradient(120% 90% at 50% 40%,#2A3858 0%,#1B2742 60%,#141E36 100%);--ph:100svh;--pw:calc(var(--ph) * .6783);--sx:max(20px,calc(50vw - var(--pw) / 2));--vis:min(var(--pw),calc(100vw - var(--sx)))}
 @media (min-aspect-ratio:3/4){.stage{--ph:94svh}}
 .book{position:absolute;left:var(--sx);top:calc((100svh - var(--ph)) / 2);width:var(--pw);height:var(--ph);transform-style:preserve-3d}
-.miolo{position:absolute;inset:0;background:#F6EFE2;box-shadow:6px 0 0 -2px #EDE4D3,10px 0 0 -4px #E4DACA,0 30px 80px -30px rgba(0,0,0,.6)}
+.miolo{position:absolute;inset:0;background:#FFFFFF;box-shadow:6px 0 0 -2px #EDEDED,10px 0 0 -4px #E0E0E0,0 30px 80px -30px rgba(0,0,0,.6)}
 .leaf{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:0 50%;transform:translateZ(calc(var(--z) * .5px))}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
 /* Toque nos botões das folhas: no Chrome o toque parava na própria face (ou no verso) e não chegava ao link.
    Meio pixel à frente na face e verso sem toque resolvem. */
 .face:not(.back){transform:translateZ(.5px)}
 .back{pointer-events:none;transform:rotateY(180deg)}
-.papel{background:linear-gradient(90deg,#E9E0CF 0%,#F7F0E3 4%,#FBF6EC 9%,#FBF6EC 100%)}
-.verso{background:linear-gradient(270deg,#E9E0CF 0%,#F7F0E3 4%,#F9F3E8 9%)}
+.papel{background:linear-gradient(90deg,#E6E6E6 0%,#F5F5F5 4%,#FFFFFF 9%,#FFFFFF 100%)}
+.verso{background:linear-gradient(270deg,#E6E6E6 0%,#F5F5F5 4%,#FFFFFF 9%)}
 .pg-in{position:absolute;top:0;bottom:0;left:0;width:var(--vis);box-sizing:border-box;padding:calc(var(--ph) * .04 + 64px) calc(20px + 6%) calc(var(--ph) * .03 + 44px) 8%;display:flex;flex-direction:column;gap:clamp(7px,1.3svh,12px);font-size:clamp(13px,calc(var(--vis) / 27),17px);color:#22242B;font-family:'Source Serif 4',Georgia,serif}
 .faixa{position:absolute;top:0;bottom:0;left:calc(var(--vis) - 20px);width:20px;background:#1E3A63;display:flex;align-items:center;justify-content:center}
 .faixa span{writing-mode:vertical-rl;font-family:'Outfit',sans-serif;font-size:9px;font-weight:500;letter-spacing:.32em;color:#E8EEF8}
