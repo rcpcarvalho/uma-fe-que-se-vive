@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Prévia para validação: fora dos buscadores. Tirar no lançamento. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Uma fé que se vive — Devocional 2027</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1B2742}
+a{color:#1E3A63}
+/* Modo livro: a abertura é por tempo; depois a página de venda vira e fica a última, "Garantir o meu". Autor e Folhear abrem por botão. */
+.flip{position:relative;height:calc(2 * 100svh);view-timeline-name:--folhear;view-timeline-axis:block}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;perspective:2400px;background:radial-gradient(120% 90% at 50% 40%,#2A3858 0%,#1B2742 60%,#141E36 100%);--ph:100svh;--pw:calc(var(--ph) * .6783);--sx:max(20px,calc(50vw - var(--pw) / 2));--vis:min(var(--pw),calc(100vw - var(--sx)));--s0:.5}
+@media (min-aspect-ratio:3/4){.stage{--ph:94svh;--s0:.62}}
+/* Abertura: a capa abre já com zoom na página; a árvore cresce em tela cheia; a folha vira e pousa na venda. */
+.cam{position:absolute;inset:0;transform-origin:0 0;transform-style:preserve-3d;animation:cam 4.8s cubic-bezier(.55,0,.2,1) both}
+@keyframes cam{
+0%,8%{transform:translate(calc(50vw - var(--s0) * (var(--sx) + var(--pw) / 2)),calc(50svh - var(--s0) * var(--ph) / 2)) scale(var(--s0))}
+40%,100%{transform:translate(0,calc((100svh - var(--ph)) / 2)) scale(1)}}
+.book{position:absolute;left:var(--sx);top:0;width:var(--pw);height:var(--ph);transform-style:preserve-3d;transform-origin:0 50%;animation:tilt 4.8s ease-out both}
+@keyframes tilt{0%,8%{transform:rotateY(-16deg) rotateX(4deg)}38%,100%{transform:none}}
+.miolo{position:absolute;inset:0;background:#F6EFE2;box-shadow:6px 0 0 -2px #EDE4D3,10px 0 0 -4px #E4DACA,0 30px 80px -30px rgba(0,0,0,.6)}
+.leaf{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:0 50%;transform:translateZ(calc(var(--z) * .5px))}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+/* Toque nos botões das folhas: no Chrome o toque parava na própria face (ou no verso) e não chegava ao link.
+   Meio pixel à frente na face e verso sem toque resolvem. */
+.face:not(.back){transform:translateZ(.5px)}
+.back{pointer-events:none;transform:rotateY(180deg)}
+.capa{animation:abre 4.8s cubic-bezier(.6,0,.3,1) both}
+@keyframes abre{0%,8%{transform:rotateY(0) translateZ(calc(var(--z) * .5px))}38%,100%{transform:rotateY(-178deg) translateZ(calc(var(--z) * .5px))}}
+.solta{animation:vira 4.8s cubic-bezier(.6,0,.3,1) both}
+@keyframes vira{0%,62%{transform:rotateY(0) translateZ(calc(var(--z) * .5px))}84%,100%{transform:rotateY(-177deg) translateZ(calc(var(--z) * .5px))}}
+.guarda{background:#152648 url("assets/guarda.png") center/cover}
+.guarda::after{content:'';position:absolute;inset:0;background:linear-gradient(270deg,rgba(0,0,0,.28),rgba(0,0,0,0) 12%)}
+/* Capa = arte final da gráfica (PDF da capa opção C, pág. 4, TrimBox). Não redesenhar. */
+.capa-f{background:#FFFFFF}
+.capa-f picture,.capa-f img{display:block;width:100%;height:100%;object-fit:fill}
+.capa-f::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3.5%;background:linear-gradient(90deg,rgba(0,0,0,.12),rgba(0,0,0,0));z-index:1}
+/* Brilho do hot stamping: só na máscara da gráfica (PDF da capa, pág. 2), por cima da arte. */
+.brilho{position:absolute;inset:0;z-index:2;pointer-events:none;-webkit-mask:var(--m) 0 0/100% 100% no-repeat;mask:var(--m) 0 0/100% 100% no-repeat;background:linear-gradient(110deg,rgba(255,190,70,0) 36%,rgba(255,200,90,.75) 44%,rgba(255,242,200,1) 50%,rgba(255,200,90,.75) 56%,rgba(255,190,70,0) 64%) no-repeat;background-size:250% 100%;mix-blend-mode:screen;animation:brilho 4.6s linear infinite}
+.m-capa{--m:url("assets/livro/hotstamp-mascara.png")}
+@keyframes brilho{0%{background-position:97% 0}68%,100%{background-position:3% 0}}
+.fe{background:linear-gradient(100deg,#8C6420 0%,#C9973A 30%,#FBE7A8 48%,#C9973A 62%,#8C6420 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 3.6s linear infinite}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-160% 0}}
+.papel{background:linear-gradient(90deg,#E9E0CF 0%,#F7F0E3 4%,#FBF6EC 9%,#FBF6EC 100%)}
+.verso{background:linear-gradient(270deg,#E9E0CF 0%,#F7F0E3 4%,#F9F3E8 9%)}
+.azul{background:linear-gradient(180deg,#13274E 0%,#0C1933 100%)}
+.azul .pg-in{color:#FFFFFF}
+/* A árvore cresce em tela cheia (12 quadros, um por vez, para as bordas das máscaras não somarem). */
+.arvs{position:absolute;top:0;bottom:0;left:0;width:calc(var(--vis) - 20px)}
+.frase-arv{position:absolute;top:calc(var(--ph) * .07);left:0;right:0;box-sizing:border-box;padding:0 8%;margin:0;text-align:center;font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(22px,calc(var(--vis) / 13),34px);line-height:1.15;color:#FFFFFF;z-index:2}
+.arvt{position:absolute;left:0;right:0;bottom:10%;width:100%;aspect-ratio:520/444;object-fit:cover;opacity:0;-webkit-mask-image:radial-gradient(64% 62% at 50% 55%,#000 55%,transparent 100%);mask-image:radial-gradient(64% 62% at 50% 55%,#000 55%,transparent 100%);animation:quadro .17s linear both;animation-delay:calc(1.55s + var(--i) * .085s)}
+.arvt.first{opacity:1;animation:sai .1s linear 1.61s both}
+.arvt.last{animation-name:brota;animation-duration:.08s}
+@keyframes quadro{0%{opacity:0}35%,65%{opacity:1}100%{opacity:0}}
+@keyframes brota{from{opacity:0}to{opacity:1}}
+@keyframes sai{from{opacity:1}to{opacity:0}}
+.pg-in{position:absolute;top:0;bottom:0;left:0;width:var(--vis);box-sizing:border-box;padding:calc(var(--ph) * .05 + 64px) calc(20px + 6%) calc(var(--ph) * .05) 8%;display:flex;flex-direction:column;gap:clamp(7px,1.4svh,14px);font-size:clamp(14px,calc(var(--vis) / 25),19px);color:#22242B;font-family:'Source Serif 4',Georgia,serif}
+.faixa{position:absolute;top:0;bottom:0;left:calc(var(--vis) - 20px);width:20px;background:#1E3A63;display:flex;align-items:center;justify-content:center}
+.faixa span{writing-mode:vertical-rl;font-family:'Outfit',sans-serif;font-size:9px;font-weight:500;letter-spacing:.32em;color:#E8EEF8}
+.lbl{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.62em;color:#6B6F7A}
+.h{margin:0;font-family:'Playfair Display',serif;font-weight:600;font-size:1.6em;line-height:1.1;color:#1E3A63}
+.p{margin:0;font-size:1em;line-height:1.5;color:#22242B}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#1E3A63;color:#FFFFFF;font-family:'Outfit',sans-serif;font-weight:600;font-size:.9em;letter-spacing:.06em;text-decoration:none}
+.btn-gold{background:linear-gradient(100deg,#A9771F,#E8C46E 45%,#F7E2A6 52%,#D4A445 60%,#A9771F);background-size:220% 100%;color:#0E2244;animation:shine 5s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.btn-linha{background:transparent;color:#1E3A63;border:1.5px solid #1E3A63}
+.preco{display:flex;align-items:baseline;gap:.6em;flex-wrap:wrap}
+/* O caminho do ano: texto e árvores da quarta capa, exatamente como no PDF. */
+.passos{display:flex;flex-direction:column;gap:.5em}
+.passo{display:grid;grid-template-columns:24% minmax(0,1fr);gap:.7em;align-items:center}
+.passo img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.passo p{margin:0;font-size:.84em;line-height:1.38;color:#22242B}
+.passo b{color:#1E3A63}
+/* Faixa de compra no topo, em evidência: aparece quando o livro pousa na venda. */
+/* Preço em evidência: original riscado e preço de pré-venda em destaque (faixa do topo e página de compra). */
+.pf{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+.pf .de{display:flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-size:12px;color:#B9C4DA;white-space:nowrap}
+.pf .de s{font-size:14px;color:#D5DCEA;text-decoration-color:#E0B65A;text-decoration-thickness:2px}
+.pf .de b{font-size:10px;font-weight:600;color:#0E1D3A;background:#F2D27E;border-radius:4px;padding:2px 5px;letter-spacing:.04em}
+.pf .por{font-family:'Playfair Display',serif;font-weight:600;font-size:26px;color:#F2D27E;white-space:nowrap}
+.pf .ate{font-family:'Outfit',sans-serif;font-size:10px;color:#B9C4DA;letter-spacing:.04em;white-space:nowrap}
+.oferta-final{width:100%;box-sizing:border-box;padding:.8em 1em .9em;border:1.5px solid #C9973A;border-radius:14px;background:rgba(201,151,58,.1);display:flex;flex-direction:column;align-items:center;gap:.2em;font-family:'Outfit',sans-serif;color:#D5DCEA}
+.oferta-final s{font-size:1.05em;color:#D5DCEA;text-decoration-color:#E0B65A;text-decoration-thickness:2px}
+.oferta-final .por{font-family:'Playfair Display',serif;font-weight:600;font-size:2.4em;line-height:1.05;color:#F2D27E}
+.oferta-final b{font-size:.7em;font-weight:600;color:#0E1D3A;background:#F2D27E;border-radius:4px;padding:2px 6px;letter-spacing:.06em}
+/* Diferencial da pré-venda: dedicatória do autor e livro pronto para presente. */
+.dedic{margin:0;font-family:'Outfit',sans-serif;font-size:.7em;font-weight:500;letter-spacing:.02em;color:#7A5A2E;display:flex;align-items:center;gap:.5em}
+.dedic::before{content:'';flex:none;width:.55em;height:.55em;border-radius:50%;background:#C9973A}
+.dif{width:100%;box-sizing:border-box;margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.45em;text-align:left;font-family:'Outfit',sans-serif;font-size:.72em;line-height:1.35;color:#D5DCEA}
+.dif li{display:grid;grid-template-columns:.6em 1fr;gap:.6em;align-items:start}
+.dif li::before{content:'';width:.55em;height:.55em;margin-top:.35em;border-radius:50%;background:#C9973A}
+.dif b{color:#F2D27E;font-weight:600}
+.mbar{position:absolute;left:0;right:0;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:#0E1D3A;border-bottom:2px solid #C9973A;box-shadow:0 10px 24px -10px rgba(0,0,0,.6);opacity:0;animation:aparece .5s ease-out 4.2s both}
+@keyframes aparece{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+.mini{flex:none;padding:0;border:0;background:none;cursor:pointer;border-radius:2px;box-shadow:0 4px 10px -2px rgba(0,0,0,.55);transition:transform .2s}
+.mini img{display:block;width:34px;height:50px;border-radius:2px}
+.mini:active{transform:scale(.94)}
+.mini:focus-visible{outline:2px solid #F2D27E;outline-offset:3px}
+.dica{position:absolute;left:0;right:0;bottom:28px;z-index:40;text-align:center;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#C9D4E8;opacity:0;animation:dica 2.8s ease 4.6s both}
+@keyframes dica{0%{opacity:0;transform:translateY(6px)}30%,70%{opacity:1;transform:none}100%{opacity:0}}
+@supports (animation-timeline: view()){
+.pg{animation:folha linear both;animation-timeline:--folhear;animation-range:contain var(--r0) contain var(--r1)}
+.pg .front::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0) 60%);opacity:0;animation:sombra linear both;animation-timeline:--folhear;animation-range:contain var(--r0) contain var(--r1);pointer-events:none}
+}
+@keyframes folha{from{transform:rotateY(0) translateZ(calc(var(--z) * .5px))}to{transform:rotateY(-179deg) translateZ(calc(var(--z) * .5px))}}
+@keyframes sombra{0%{opacity:0}60%{opacity:1}100%{opacity:1}}
+@supports not (animation-timeline: view()){
+.flip{height:auto}
+.stage{position:relative;height:auto;overflow:visible}
+.cam{position:relative;animation:none}
+.book{position:relative;left:auto;margin:0 auto;height:auto;animation:none;display:flex;flex-direction:column-reverse}
+.miolo,.capa,.solta{display:none}
+.leaf{position:relative;height:var(--ph);transform:none}
+.mbar{position:sticky}
+}
+@media (prefers-reduced-motion: reduce){
+.brilho{animation:none}
+.cam,.book,.capa,.solta{animation-duration:.01s !important}
+.arvt{animation:none;opacity:0}
+.arvt.last{opacity:1}
+}
+</style>
+
+</head>
+<body>
+
+<div style="background: #1B2742; overflow-x: clip;">
+<div class="flip">
+<div class="stage">
+<div class="cam">
+<div class="book">
+  <div class="miolo"></div>
+
+  <div class="leaf" style="--z: 2;">
+    <div class="face front azul">
+      <div class="pg-in" style="justify-content: flex-end; align-items: center; text-align: center;">
+        <img src="assets/arvore-12.jpg" alt="A árvore de dezembro, cheia de frutos" loading="lazy" style="display: block; width: 100%; flex: 1 1 0; min-height: 0; object-fit: contain; -webkit-mask-image: radial-gradient(62% 60% at 50% 55%, #000 55%, transparent 100%); mask-image: radial-gradient(62% 60% at 50% 55%, #000 55%, transparent 100%);">
+        <span class="lbl" style="color: #E8D3A0;">De semente a fruto</span>
+        <p style="margin: 0; font-family: 'Playfair Display', serif; font-size: 1.6em; line-height: 1.15; color: #FFFFFF;">2027 começa no dia 1. Comece com a Palavra <span class="fe">aberta</span>.</p>
+        <ul class="dif">
+          <li><span><b>Dedicatória do Pr. Nei</b> com o seu nome, pronta para o lançamento.</span></li>
+          <li><span><b>Vai presentear?</b> O livro chega com a dedicatória do autor e a página De/Para preenchida à mão.</span></li>
+        </ul>
+        <div class="oferta-final">
+          <span class="lbl" style="color: #E8D3A0;">Preço especial de pré-venda</span>
+          <s>De R$ 99,90</s>
+          <span class="por">R$ 69,90</span>
+          <span style="display: flex; align-items: center; gap: 8px; font-size: .72em;"><b>−30%</b> até 30/nov</span>
+        </div>
+        <a href="#comprar" class="comprar btn btn-gold" style="width: 100%; box-sizing: border-box; padding: 0 12px; font-size: .8em; white-space: nowrap;">Garantir o meu com preço especial</a>
+        <p style="margin: 0 0 1.5em; font-family: 'Outfit', sans-serif; font-size: .62em; letter-spacing: .1em; color: #A9B4C8;">Envio a partir de 3/dez · Retirada grátis na Nasci Pra Deus</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="leaf pg" style="--z: 3; --r0: 60%; --r1: 100%;">
+    <div class="face front papel">
+      <div class="pg-in">
+        <span class="lbl">Devocional 2027 · 365 mensagens diárias</span>
+        <h1 class="h">Ouvir a Palavra é o começo. Vivê-la é o caminho.</h1>
+        <div class="passos">
+          <div class="passo"><img src="assets/livro/caminho-1.jpg" alt="" width="355" height="205"><p><b>Todo dia</b>, uma mensagem que vai fundo na Palavra e volta para a sua rotina, com algo para viver no mesmo dia.</p></div>
+          <div class="passo"><img src="assets/livro/caminho-2.jpg" alt="" width="355" height="310"><p><b>Todo mês</b>, uma mensagem em vídeo para refletir e se direcionar pela Palavra, e um planner com áreas de desenvolvimento, metas e objetivos.</p></div>
+          <div class="passo"><img src="assets/livro/caminho-3.jpg" alt="" width="355" height="348"><p><b>Ao longo do ano</b>, como uma semente que vai florescendo, os pequenos passos se somam, e o que era só ouvido passa a ser vivido.</p></div>
+        </div>
+        <div class="preco">
+          <s style="font-family: 'Outfit', sans-serif; font-size: .85em; color: #6B6F7A;">R$ 99,90</s>
+          <span style="font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.9em; color: #1E3A63;">R$ 69,90</span>
+          <span style="font-family: 'Outfit', sans-serif; font-size: .7em; color: #4D5566;">até 30/nov · envio a partir de 3/dez</span>
+        </div>
+        <p class="dedic">Na pré-venda: dedicatória do Pr. Nei e opção para presente</p>
+        <a href="#comprar" class="comprar btn btn-gold">Garantir o meu</a>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <a href="folhear.html" class="btn btn-linha" style="min-height: 42px; padding: 0 10px;">Folhear o livro</a>
+          <a href="autor.html" class="btn btn-linha" style="min-height: 42px; padding: 0 10px;">Sobre o autor</a>
+        </div>
+      </div>
+      <div class="faixa"><span>UMA FÉ QUE SE VIVE</span></div>
+    </div>
+    <div class="face back verso"></div>
+  </div>
+
+  <div class="leaf solta" style="--z: 4;">
+    <div class="face front azul">
+      <div class="arvs">
+        <p class="frase-arv">365 dias de Palavra, <span class="fe">crescimento</span> e transformação.</p>
+        <img class="arvt first" src="assets/arvore-01.jpg" alt="">
+        <img class="arvt" src="assets/arvore-02.jpg" alt="" style="--i: 1;">
+        <img class="arvt" src="assets/arvore-03.jpg" alt="" style="--i: 2;">
+        <img class="arvt" src="assets/arvore-04.jpg" alt="" style="--i: 3;">
+        <img class="arvt" src="assets/arvore-05.jpg" alt="" style="--i: 4;">
+        <img class="arvt" src="assets/arvore-06.jpg" alt="" style="--i: 5;">
+        <img class="arvt" src="assets/arvore-07.jpg" alt="" style="--i: 6;">
+        <img class="arvt" src="assets/arvore-08.jpg" alt="" style="--i: 7;">
+        <img class="arvt" src="assets/arvore-09.jpg" alt="" style="--i: 8;">
+        <img class="arvt" src="assets/arvore-10.jpg" alt="" style="--i: 9;">
+        <img class="arvt" src="assets/arvore-11.jpg" alt="" style="--i: 10;">
+        <img class="arvt last" src="assets/arvore-12.jpg" alt="" style="--i: 11;">
+      </div>
+    </div>
+    <div class="face back verso"></div>
+  </div>
+
+  <div class="leaf capa" style="--z: 5;">
+    <div class="face front capa-f">
+      <picture>
+        <source srcset="assets/livro/capa-frente.webp" type="image/webp">
+        <img src="assets/livro/capa-frente.jpg" alt="Capa do livro Uma fé que se vive, devocional de Nei Messias" width="950" height="1400" fetchpriority="high">
+      </picture>
+      <span class="brilho m-capa" aria-hidden="true"></span>
+    </div>
+    <div class="face back guarda"></div>
+  </div>
+</div>
+</div>
+<span class="dica">Role para virar a página</span>
+<div class="mbar">
+  <div style="display: flex; align-items: center; gap: 12px; min-width: 0;">
+    <button type="button" class="mini" id="ver-capa" aria-label="Ver a capa do livro"><img src="assets/livro/capa-frente.jpg" alt="" width="34" height="50"></button>
+    <div class="pf">
+      <span class="de">De <s>R$ 99,90</s> <b>−30%</b></span>
+      <span class="por">R$ 69,90</span>
+      <span class="ate">pré-venda até 30/nov</span>
+    </div>
+  </div>
+  <a href="#comprar" class="comprar btn btn-gold" style="font-size: 15px; min-height: 46px; padding: 0 18px; white-space: nowrap; flex: none;">Garantir o meu</a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// Fechar e abrir o livro de novo: no topo, puxar para baixo fecha; rolar para baixo (ou tocar no livro) abre.
+// A miniatura da capa na barra volta ao topo e fecha o livro.
+const temFolhear = CSS.supports('animation-timeline: view()');
+const abertura = () => document.getAnimations().filter(a => a.timeline === document.timeline &&
+  ['cam', 'book', 'capa', 'solta', 'arvt'].some(c => a.effect?.target?.classList?.contains(c)));
+let fechado = false;
+function fechar(){
+  if (fechado || !temFolhear) return;
+  fechado = true;
+  abertura().forEach(a => { a.updatePlaybackRate(-2.5); a.play(); });
+}
+function abrir(){
+  if (!fechado) return;
+  fechado = false;
+  abertura().forEach(a => { a.updatePlaybackRate(1.4); a.play(); });
+}
+// Voltando do Folhear (index.html#livro): pula a abertura e mostra direto a página de venda.
+if (location.hash === '#livro') document.getAnimations()
+  .filter(a => a.timeline === document.timeline && a.effect?.getComputedTiming().endTime !== Infinity)
+  .forEach(a => a.finish());
+document.getElementById('ver-capa').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  fechar();
+});
+document.querySelector('.stage').addEventListener('click', e => { if (fechado && !e.target.closest('.mbar')) abrir(); });
+addEventListener('wheel', e => {
+  if (fechado && e.deltaY > 0) { e.preventDefault(); abrir(); }
+  else if (!fechado && e.deltaY < 0 && scrollY <= 2) fechar();
+}, { passive: false });
+let toqueY = null;
+addEventListener('touchstart', e => { toqueY = e.touches[0].clientY; }, { passive: true });
+addEventListener('touchmove', e => {
+  if (toqueY === null) return;
+  const dy = e.touches[0].clientY - toqueY;
+  if (fechado) { e.preventDefault(); if (dy < -30) { abrir(); toqueY = null; } }
+  else if (dy > 40 && scrollY <= 2) { fechar(); toqueY = null; }
+}, { passive: false });
+addEventListener('touchend', () => { toqueY = null; });
+addEventListener('scroll', () => { if (fechado && scrollY > 2) abrir(); }, { passive: true });
+
+</script>
+<script src="compra.js"></script>
+</body>
+</html>

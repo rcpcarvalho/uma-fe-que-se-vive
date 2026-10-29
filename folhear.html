@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Prévia para validação: fora dos buscadores. Tirar no lançamento. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Folhear — Uma fé que se vive</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;family=Outfit:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#1B2742}
+/* Amostra do miolo: páginas exportadas do livro, sem redesenho. Cada tela de rolagem vira uma folha. */
+.flip{position:relative;height:calc(5 * 100svh);view-timeline-name:--folhear;view-timeline-axis:block}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden;perspective:2400px;background:radial-gradient(120% 90% at 50% 40%,#2A3858 0%,#1B2742 60%,#141E36 100%);--pw:min(calc(100vw - 40px),calc((100svh - 190px) * .6783),520px);--ph:calc(var(--pw) / .6783)}
+.book{position:absolute;left:calc(50vw - var(--pw) / 2);top:calc(50svh - var(--ph) / 2 + 4px);width:var(--pw);height:var(--ph);transform-style:preserve-3d}
+.miolo{position:absolute;inset:0;background:#F6EFE2;box-shadow:6px 0 0 -2px #EDE4D3,10px 0 0 -4px #E4DACA,0 30px 80px -30px rgba(0,0,0,.6)}
+.leaf{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:0 50%;transform:translateZ(calc(var(--z) * .5px))}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:#FBF6EC}
+.face img{display:block;width:100%;height:100%;object-fit:cover;object-position:0 0}
+/* Toque nos botões das folhas: no Chrome o toque parava na própria face (ou no verso) e não chegava ao link.
+   Meio pixel à frente na face e verso sem toque resolvem. */
+.face:not(.back){transform:translateZ(.5px)}
+.back{pointer-events:none;transform:rotateY(180deg);background:linear-gradient(270deg,#E9E0CF 0%,#F7F0E3 4%,#F9F3E8 9%)}
+.fim{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:0 10%;box-sizing:border-box;font-family:'Source Serif 4',Georgia,serif;color:#22242B;background:linear-gradient(90deg,#E9E0CF 0%,#F7F0E3 4%,#FBF6EC 9%,#FBF6EC 100%)}
+.lbl{font-family:'Outfit',sans-serif;font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:#6B6F7A}
+.h{margin:0;font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(22px,calc(var(--pw) / 13),32px);line-height:1.12;color:#1E3A63}
+.btn{display:flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;background:#1E3A63;color:#FFFFFF;font-family:'Outfit',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-decoration:none}
+.btn-gold{background:linear-gradient(100deg,#A9771F,#E8C46E 45%,#F7E2A6 52%,#D4A445 60%,#A9771F);background-size:220% 100%;color:#0E2244;animation:shine 5s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.topo{position:absolute;left:0;right:0;bottom:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 16px calc(14px + env(safe-area-inset-bottom));font-family:'Outfit',sans-serif;font-size:13px;color:#C9D4E8}
+.topo a{color:#FFFFFF;text-decoration:none;font-weight:500}
+.legenda{position:absolute;left:0;right:0;bottom:52px;z-index:20;text-align:center;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C9D4E8}
+/* Preço em evidência: original riscado e preço de pré-venda em destaque (faixa do topo e página de compra). */
+.pf{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+.pf .de{display:flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-size:12px;color:#B9C4DA;white-space:nowrap}
+.pf .de s{font-size:14px;color:#D5DCEA;text-decoration-color:#E0B65A;text-decoration-thickness:2px}
+.pf .de b{font-size:10px;font-weight:600;color:#0E1D3A;background:#F2D27E;border-radius:4px;padding:2px 5px;letter-spacing:.04em}
+.pf .por{font-family:'Playfair Display',serif;font-weight:600;font-size:26px;color:#F2D27E;white-space:nowrap}
+.pf .ate{font-family:'Outfit',sans-serif;font-size:10px;color:#B9C4DA;letter-spacing:.04em;white-space:nowrap}
+.oferta-final{width:100%;box-sizing:border-box;padding:.8em 1em .9em;border:1.5px solid #C9973A;border-radius:14px;background:rgba(201,151,58,.1);display:flex;flex-direction:column;align-items:center;gap:.2em;font-family:'Outfit',sans-serif;color:#D5DCEA}
+.oferta-final s{font-size:1.05em;color:#D5DCEA;text-decoration-color:#E0B65A;text-decoration-thickness:2px}
+.oferta-final .por{font-family:'Playfair Display',serif;font-weight:600;font-size:2.4em;line-height:1.05;color:#F2D27E}
+.oferta-final b{font-size:.7em;font-weight:600;color:#0E1D3A;background:#F2D27E;border-radius:4px;padding:2px 6px;letter-spacing:.06em}
+.mbar{position:absolute;left:0;right:0;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;background:#0E1D3A;border-bottom:2px solid #C9973A;box-shadow:0 10px 24px -10px rgba(0,0,0,.6)}
+@supports (animation-timeline: view()){
+.pg{animation:folha linear both;animation-timeline:--folhear;animation-range:contain var(--r0) contain var(--r1)}
+}
+@keyframes folha{from{transform:rotateY(0) translateZ(calc(var(--z) * .5px))}to{transform:rotateY(-179deg) translateZ(calc(var(--z) * .5px))}}
+@supports not (animation-timeline: view()){
+.flip{height:auto}
+.stage{position:relative;height:auto;overflow:visible;padding:60px 0 90px}
+.book{position:relative;left:auto;top:auto;margin:0 auto;height:auto;display:flex;flex-direction:column-reverse;gap:16px}
+.miolo,.legenda{display:none}
+.leaf{position:relative;height:var(--ph);transform:none}
+.back{display:none}
+.mbar{position:fixed}
+}
+</style>
+</head>
+<body>
+
+<div class="flip">
+<div class="stage">
+  <div class="topo"><a href="index.html#livro">← Voltar para a página</a><span>Amostra do livro</span></div>
+  <div class="book">
+    <div class="miolo"></div>
+
+    <div class="leaf" style="--z: 1;">
+      <div class="face fim">
+        <span class="lbl">Gostou do que viu?</span>
+        <p class="h">São 365 dias assim. Garanta o seu pelo preço de lançamento.</p>
+        <a href="#comprar" class="comprar btn btn-gold">Garantir o meu</a>
+        <a href="index.html#livro" class="btn" style="background: transparent; color: #1E3A63; border: 1.5px solid #1E3A63; min-height: 42px;">Voltar para a página</a>
+      </div>
+    </div>
+
+    <div class="leaf pg" style="--z: 2; --r0: 90%; --r1: 100%;">
+      <div class="face"><img src="assets/pagina-diaria.jpg" alt="Mensagem do dia 28 de outubro: Não vos deixarei órfãos" width="760" height="1093" loading="lazy"></div>
+      <div class="face back"></div>
+    </div>
+
+    <div class="leaf pg" style="--z: 3; --r0: 65%; --r1: 75%;">
+      <div class="face"><img src="assets/planner.jpg" alt="Página do planner de janeiro: Minha fé no cotidiano" width="640" height="944" loading="lazy"></div>
+      <div class="face back"></div>
+    </div>
+
+    <div class="leaf pg" style="--z: 4; --r0: 40%; --r1: 50%;">
+      <div class="face"><img src="assets/abertura-janeiro.jpg" alt="Abertura do mês de janeiro, com o QR code da mensagem do mês" width="640" height="944"></div>
+      <div class="face back"></div>
+    </div>
+
+    <!-- Ordem do livro: De/Para (início) → abertura de janeiro → planner de janeiro → mensagem de 28/out. -->
+    <div class="leaf pg" style="--z: 5; --r0: 15%; --r1: 25%;">
+      <div class="face"><img src="assets/presente.jpg" alt="Página de De/Para para presentear: “Que, nestas páginas, você encontre encorajamento para viver a fé todos os dias.”" width="640" height="944"></div>
+      <div class="face back"></div>
+    </div>
+  </div>
+  <span class="legenda">Role para virar a página · pinça para ampliar</span>
+  <div class="mbar">
+    <div class="pf">
+      <span class="de">De <s>R$ 99,90</s> <b>−30%</b></span>
+      <span class="por">R$ 69,90</span>
+      <span class="ate">pré-venda até 30/nov</span>
+    </div>
+    <a href="#comprar" class="comprar btn btn-gold" style="font-size: 15px; min-height: 46px; padding: 0 18px; white-space: nowrap; flex: none;">Garantir o meu</a>
+  </div>
+</div>
+</div>
+
+<script src="compra.js"></script>
+</body>
+</html>
